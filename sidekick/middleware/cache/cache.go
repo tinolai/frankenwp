@@ -167,6 +167,11 @@ func (c Cache) ServeHTTP(w http.ResponseWriter, r *http.Request,
 
 	c.logger.Debug("HTTP Version", zap.String("Version", r.Proto))
 
+	// tinotest
+	c.logger.Error("Debug ############### ", zap.String("r.URL.Path", r.URL.Path))
+
+	// end
+
 	for _, prefix := range c.BypassPathPrefixes {
 		if strings.HasPrefix(r.URL.Path, prefix) && prefix != "" {
 			c.logger.Debug("wp cache - bypass prefix", zap.String("prefix", prefix))
